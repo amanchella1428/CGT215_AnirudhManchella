@@ -18,7 +18,7 @@ int main()
 	X = (0 - B) / A;
 
 	//printing
-	cout << "A = " << A;
-	cout << "B = " << B;
-	cout << "Final value of x = " << X;
+	cout << "\n\nSolving for (" << A << ")x + (" << B << ")...";
+
+	cout << "\nFinal value of x = " << X;
 }
