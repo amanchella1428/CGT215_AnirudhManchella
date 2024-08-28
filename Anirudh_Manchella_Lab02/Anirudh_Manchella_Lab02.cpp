@@ -14,8 +14,10 @@ int main()
 	cout << "\nPlease enter a value for B: ";
 	cin >> B;
 
+	//the math
 	X = (0 - B) / A;
 
+	//printing
 	cout << "A = " << A;
 	cout << "B = " << B;
 	cout << "Final value of x = " << X;
