@@ -1,20 +1,125 @@
-// Lab03.cpp : This file contains the 'main' function. Program execution begins and ends there.
-//
-
 #include <iostream>
 
-int main()
-{
-    std::cout << "Hello World!\n";
+using namespace std;
+
+//The main menu
+void printMenu(int& choice, int& enterProgram) {
+	if (enterProgram == 1) {
+		cout << "Welcome to simple calculator  solving for C where A _ B = C." << endl;
+		cout << "please select an operation to perform: " << endl;
+		cout << "1. Multiply" << endl;
+		cout << "2. Divide" << endl;
+		cout << "3. Add" << endl;
+		cout << "4. Subtract" << endl;
+		cout << "5. Exit" << endl;
+		cout << "\nYour Selection: ";
+		cin >> choice;
+		while (choice > 5 || choice < 1) {
+			cout << "INVALID INPUT. PLEASE ENTER PROPER INPUT. " << endl;
+			cin >> choice;
+		}
+	}
 }
 
-// Run program: Ctrl + F5 or Debug > Start Without Debugging menu
-// Debug program: F5 or Debug > Start Debugging menu
+//function to get the choices
+void getChoices(float& A, float& B) {
+	cout << "Please note commutative property and when it does and does not apply." << endl;
+	cout << "Please enter the first value:";
+	cin >> A;
+	cout << "Please enter the second value:";
+	cin >> B;
+	// The rest of this function is an exercise to the reader
+}
 
-// Tips for Getting Started: 
-//   1. Use the Solution Explorer window to add/manage files
-//   2. Use the Team Explorer window to connect to source control
-//   3. Use the Output window to see build output and other messages
-//   4. Use the Error List window to view errors
-//   5. Go to Project > Add New Item to create new code files, or Project > Add Existing Item to add existing code files to the project
-//   6. In the future, to open this project again, go to File > Open > Project and select the .sln file
+//function for the first choice
+void multiplyFunction(float A, float B) {
+	float C;
+	C = A * B;
+	cout << A << " * " << B << " = " << C << endl;
+}
+
+//function for the second choice
+void divideFunction(float A, float B) {
+	if (B == 0) {
+		cout << "CANNOT DIVIDE BY 0" << endl;
+	}
+	else {
+		float C;
+
+		C = A / B;
+		cout << A << " / " << B << " = " << C << endl;
+	}
+}
+
+//function for the third choice
+void addFunction(float A, float B) {
+	float C;
+	C = A + B;
+	cout << A << " + " << B << " = " << C << endl;
+}
+
+//function for the fourth choice
+void subtractFunction(float A, float B) {
+	float C;
+	C = A - B;
+	cout << A << " - " << B << " = " << C << endl;
+}
+
+//function for the fifth choice
+void exitFunction() {
+	cout << "STOPPING PROGRAM" << endl;
+}
+
+//Input check
+void askAgain(int& enterProgram) {
+	if (enterProgram == 0) {
+		cout << "Would you like to calculate another operation?" << endl;
+		cout << "1. YES" << endl;
+		cout << "2. NO" << endl;
+		cin >> enterProgram;
+		while (enterProgram != 1 && enterProgram != 2) {
+			cout << "INVALID INPUT. PLEASE ENTER PROPER INPUT. " << endl;
+			cin >> enterProgram;
+		}
+	}
+}
+
+//Main function
+int main() {
+
+	//variable declaration
+	int enterProgram = 1;
+	int choice;
+	float A;
+	float B;
+
+	while (enterProgram == 1) {
+		//main menu choices
+		printMenu(choice, enterProgram);
+
+		//Getting user input
+		getChoices(A, B);
+
+		//Program decisions
+		if (choice == 1) {
+			multiplyFunction(A, B);
+		}
+		if (choice == 2) {
+			divideFunction(A, B);
+		}
+		if (choice == 3) {
+			addFunction(A, B);
+		}
+		if (choice == 4) {
+			subtractFunction(A, B);
+		}
+		if (choice == 5) {
+			exitFunction();
+		}
+
+		//resetting the user choice
+		enterProgram = 0;
+		askAgain(enterProgram);
+	}
+	return 0;
+}
