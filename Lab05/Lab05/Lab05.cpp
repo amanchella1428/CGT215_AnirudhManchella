@@ -4,33 +4,35 @@
 
 using namespace std;
 
-// Function to encode a character using the cipher
-char encodeChar(char ch, const vector<char>& cipher) {
+//Setting the values of each in the cipher
+char settingCipher(char ch, const vector<char>& cipher) {
+    //uppercase code
     if (ch >= 'A' && ch <= 'Z') {
-        return cipher[ch - 'A']; // Encode uppercase letter
+        return cipher[ch - 'A'];
     }
+    //lowercase code, and then make it back to uppercase
     else if (ch >= 'a' && ch <= 'z') {
-        // Convert lowercase to uppercase, encode, then convert back to lowercase
         char upperCaseChar = ch - 32;
         return cipher[upperCaseChar - 'A'] + 32;
     }
+    //if not a letter, then return the character (things like commas, semicolons, and more)
     else {
-        return ch; // If not a letter, return the character as is
+        return ch;
     }
 }
 
 int main() {
-    // The cipher vector
+    //The cipher vector (Given in the lab document)
     vector<char> cipher = { 'V','F','X','B','L','I','T','Z','J','R','P','H','D','K','N','O','W','S','G','U','Y','Q','M','A','C','E' };
 
-    // Input string
+    //Input string (Diddn't tell to put it in a function or do input check, so I didn't. But it can easily be done)
     string text;
     cout << "Enter a string (max 128 characters): ";
     getline(cin, text);
 
-    // Iterate over the input string and encode each character
+    //repeating the process for each character
     for (size_t i = 0; i < text.length(); i++) {
-        cout << encodeChar(text[i], cipher);
+        cout << settingCipher(text[i], cipher);
     }
 
     cout << endl;
