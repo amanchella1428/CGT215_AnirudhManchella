@@ -71,7 +71,7 @@ int main() {
     //The code was treating the spawning as a collision of the main box, so I added a time delay. Was that efficient? probably not, but it worked.
     float delayTime = 2.0f;
     centerBox.onCollision = [&bangCount, &clock, delayTime](PhysicsBodyCollisionResult result) {
-        // Start counting bangs after 2 seconds
+        //Add a time delay because it was counting spawn as collision and we couldn't have that
         if (clock.getElapsedTime().asSeconds() > delayTime) {
             cout << "bang " << bangCount + 1 << endl; //added the + 1 for better readability in case the user, player, or someone doesn't realize programming starts from 0 and not 1.
             bangCount++;
@@ -79,7 +79,7 @@ int main() {
                 exit(0);
             }
         }
-        };
+        }; //don't know why I needed a semi-colon here, but it wouldn't work otherwise, so here we are.
 
     //I couldn't see it happen, so I slowed down the ball.
     ball.applyImpulse(Vector2f(0.45f, 0.5f));
