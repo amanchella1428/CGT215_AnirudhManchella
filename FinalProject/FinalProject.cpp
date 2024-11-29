@@ -6,6 +6,11 @@ using namespace std;
 //sharpness modifier for me to debug
 std::vector<std::vector<int>> createSharpenKernel(int sharpenStrength) {
     return {
+        /*{  0, -1,  0},
+        { -1,  5, -1},
+        {  0, -1,  0}*/
+
+
         {  0, -sharpenStrength,  0},
         { -sharpenStrength,  4 + sharpenStrength, -sharpenStrength},
         {  0, -sharpenStrength,  0}
